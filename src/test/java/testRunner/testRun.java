@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 		features = ".//Features",
 		glue = "stepDefinitions",
 		//tags = "@Skip",
-		dryRun=false,//creo que esto sirve para que se abra la ventana del navegador cuando esta en false
+		dryRun=false,
 		plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 		)
 
