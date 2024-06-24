@@ -14,10 +14,9 @@ Feature: Validate the functionality of Products page on NopCommerce site
     And User select a "PNG" file to import
     And user click Import Form Excel Button
     Then User validates "For security purposes, the feature you have requested is not available on the demo site." error alert
-    And Close Browser
-    
+
     Scenario: As a User, I want to see a success message when uploading an Excel File
-    Given User Launch "Chrome" Browser
+    Given User Launch "Edge" Browser
     When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
     And User enters "admin@yourstore.com" as Username
     And User enters "admin" as Password

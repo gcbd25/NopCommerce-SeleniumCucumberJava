@@ -1,7 +1,7 @@
 Feature: Validate the functionality of Customers page on NopCommerce site
 
   Scenario: As a User, I want to see an error message if I leave empty all fields while creating a user
-    Given User Launch "Firefox" Browser
+    Given User Launch "Chrome" Browser
     When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
     And User enters "admin@yourstore.com" as Username
     And User enters "admin" as Password
