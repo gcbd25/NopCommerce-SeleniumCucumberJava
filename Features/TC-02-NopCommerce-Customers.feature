@@ -2,9 +2,9 @@ Feature: Validate the functionality of Customers page on NopCommerce site
 
   Scenario: As a User, I want to see an error message if I leave empty all fields while creating a user
     Given User Launch "Chrome" Browser
-    When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
-    And User enters "admin@yourstore.com" as Username
-    And User enters "admin" as Password
+    When User Opens URL
+    And User enters a valid Username
+    And User enters a valid Password
     And User click LogIn Button
     Then User validates landing on "Dashboard" Page
     And User click "Customers" from left side Menu
@@ -18,9 +18,9 @@ Feature: Validate the functionality of Customers page on NopCommerce site
 
   Scenario: As a User, I want to see an error message if I enter an invalid email address
     Given User Launch "Edge" Browser
-    When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
-    And User enters "admin@yourstore.com" as Username
-    And User enters "admin" as Password
+    When User Opens URL
+    And User enters a valid Username
+    And User enters a valid Password
     And User click LogIn Button
     Then User validates landing on "Dashboard" Page
     And User click "Customers" from left side Menu
@@ -33,12 +33,11 @@ Feature: Validate the functionality of Customers page on NopCommerce site
     Then User validates "Please enter a valid email address." error message under email field
     And Close Browser
 
-  @Skip
   Scenario: As a User, I want to be able to create a new user
     Given User Launch "Chrome" Browser
-    When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
-    And User enters "admin@yourstore.com" as Username
-    And User enters "admin" as Password
+    When User Opens URL
+    And User enters a valid Username
+    And User enters a valid Password
     And User click LogIn Button
     Then User validates landing on "Dashboard" Page
     And User click "Customers" from left side Menu
@@ -58,12 +57,11 @@ Feature: Validate the functionality of Customers page on NopCommerce site
     Then User validates "The new customer has been added successfully." success alert
     And Close Browser
 
-  @Skip
   Scenario: As a User, I want to be able to delete
     Given User Launch "Edge" Browser
-    When User Opens URL "https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F"
-    And User enters "admin@yourstore.com" as Username
-    And User enters "admin" as Password
+    When User Opens URL
+    And User enters a valid Username
+    And User enters a valid Password
     And User click LogIn Button
     Then User validates landing on "Dashboard" Page
     And User click "Customers" from left side Menu

@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import dataProvider.ConfigFileReader;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.addNewCustomerPage;
@@ -27,4 +28,5 @@ public class BaseClass {
 	public addNewCustomerPage addCustomer;
 	public editCustomerPage editCustomer;
 	public productsPage products;
+	public static ConfigFileReader configFileReader;
 }
