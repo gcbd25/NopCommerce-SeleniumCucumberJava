@@ -7,27 +7,24 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.Assert;
-import utilities.locators;
+import stepDefinitions.BaseClass;
+import utilities.locator.locatorsAddNewCustomer;
 import utilities.waitHelper;
 
-public class addNewCustomerPage {
-	//Llamamos al driver
-	public WebDriver driver;
-	//Se instancian lo que se encuentra dentro de el folder de "Utilities"
-	waitHelper wait;
-	locators loc;
-		
+import static junit.framework.TestCase.fail;
+
+public class addNewCustomerPage extends BaseClass {
 	public addNewCustomerPage(WebDriver rdriver) {
 		driver = rdriver;
 		PageFactory.initElements(driver, this);
 		wait = new waitHelper(driver);
-		loc = new locators();
+		locAddNewCustomer = new locatorsAddNewCustomer();
 	}
 	
 	public boolean clickSaveButton () {
 		try {
-			wait.waitPresenceOfElementLocated(loc.btnSaveNewCustomer);
-			driver.findElement(loc.btnSaveNewCustomer).click();
+			wait.waitPresenceOfElementLocated(locAddNewCustomer.btnSaveNewCustomer);
+			driver.findElement(locAddNewCustomer.btnSaveNewCustomer).click();
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -39,9 +36,9 @@ public class addNewCustomerPage {
 	
 	public boolean setEmail (String email) {
 		try {
-			wait.waitPresenceOfElementLocated(loc.inpEmailNewCustomer);
-			driver.findElement(loc.inpEmailNewCustomer).clear();
-			driver.findElement(loc.inpEmailNewCustomer).sendKeys(email);
+			wait.waitPresenceOfElementLocated(locAddNewCustomer.inpEmailNewCustomer);
+			driver.findElement(locAddNewCustomer.inpEmailNewCustomer).clear();
+			driver.findElement(locAddNewCustomer.inpEmailNewCustomer).sendKeys(email);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -53,8 +50,8 @@ public class addNewCustomerPage {
 	
 	public boolean setPassword (String psw) {
 		try {
-			driver.findElement(loc.inpPswNewCustomer).clear();
-			driver.findElement(loc.inpPswNewCustomer).sendKeys(psw);
+			driver.findElement(locAddNewCustomer.inpPswNewCustomer).clear();
+			driver.findElement(locAddNewCustomer.inpPswNewCustomer).sendKeys(psw);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -66,8 +63,8 @@ public class addNewCustomerPage {
 	
 	public boolean setFirstName (String firstName) {
 		try {
-			driver.findElement(loc.inpFirstNameNewCustomer).clear();
-			driver.findElement(loc.inpFirstNameNewCustomer).sendKeys(firstName);
+			driver.findElement(locAddNewCustomer.inpFirstNameNewCustomer).clear();
+			driver.findElement(locAddNewCustomer.inpFirstNameNewCustomer).sendKeys(firstName);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -79,8 +76,8 @@ public class addNewCustomerPage {
 	
 	public boolean setLastName (String lastName) {
 		try {
-			driver.findElement(loc.inpfLastNameNewCustomer).clear();
-			driver.findElement(loc.inpfLastNameNewCustomer).sendKeys(lastName);
+			driver.findElement(locAddNewCustomer.inpfLastNameNewCustomer).clear();
+			driver.findElement(locAddNewCustomer.inpfLastNameNewCustomer).sendKeys(lastName);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -93,15 +90,15 @@ public class addNewCustomerPage {
 	public boolean setGender (String gender) {
 		try {
 			if(gender.equals("Male")) {
-				driver.findElement(loc.radioButtonMale).click();
+				driver.findElement(locAddNewCustomer.radioButtonMale).click();
 			}else if(gender.equals("Female")) {
-				driver.findElement(loc.radioButtonFemale).click();
+				driver.findElement(locAddNewCustomer.radioButtonFemale).click();
 			}else {
 				driver.quit();
 			}
 		}catch(Exception e) {
 			driver.quit();
-			Assert.fail(e.getMessage());
+			fail();
 			//System.out.println(e.getMessage());
 			return false;
 		}
@@ -110,8 +107,8 @@ public class addNewCustomerPage {
 	
 	public boolean setBirthday (String day) {
 		try {
-			driver.findElement(loc.inpBirthday).clear();
-			driver.findElement(loc.inpBirthday).sendKeys(day);
+			driver.findElement(locAddNewCustomer.inpBirthday).clear();
+			driver.findElement(locAddNewCustomer.inpBirthday).sendKeys(day);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -123,8 +120,8 @@ public class addNewCustomerPage {
 	
 	public boolean setCompany (String company) {
 		try {
-			driver.findElement(loc.inpCompany).clear();
-			driver.findElement(loc.inpCompany).sendKeys(company);
+			driver.findElement(locAddNewCustomer.inpCompany).clear();
+			driver.findElement(locAddNewCustomer.inpCompany).sendKeys(company);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());

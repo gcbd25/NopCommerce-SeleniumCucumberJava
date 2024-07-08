@@ -4,28 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import junit.framework.Assert;
-import utilities.locators;
+import stepDefinitions.BaseClass;
+import utilities.locator.locatorsCustomerPage;
 import utilities.waitHelper;
 
-public class customersPage {
-	//Llamamos al driver
-	public WebDriver driver;
-	//Se instancian lo que se encuentra dentro de el folder de "Utilities"
-	waitHelper wait;
-	locators loc;
-				
+public class customersPage extends BaseClass {
 	public customersPage(WebDriver rdriver) {
 		driver = rdriver;
 		PageFactory.initElements(driver, this);
 		wait = new waitHelper(driver);
-		loc = new locators();
+		locCustomer = new locatorsCustomerPage();
 	}
 	
 	
 	public boolean clickAddNewButton () {
 		try {
-			wait.waitPresenceOfElementLocated(loc.btnAddNew);
-			driver.findElement(loc.btnAddNew).click();
+			wait.waitPresenceOfElementLocated(locCustomer.btnAddNew);
+			driver.findElement(locCustomer.btnAddNew).click();
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -37,8 +32,8 @@ public class customersPage {
 	
 	public boolean searchFirstName (String firstName) {
 		try {
-			driver.findElement(loc.inpSearchFirstName).clear();
-			driver.findElement(loc.inpSearchFirstName).sendKeys(firstName);
+			driver.findElement(locCustomer.inpSearchFirstName).clear();
+			driver.findElement(locCustomer.inpSearchFirstName).sendKeys(firstName);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -50,8 +45,8 @@ public class customersPage {
 	
 	public boolean searchLastName (String lastName) {
 		try {
-			driver.findElement(loc.inpSearchLasttName).clear();
-			driver.findElement(loc.inpSearchLasttName).sendKeys(lastName);
+			driver.findElement(locCustomer.inpSearchLasttName).clear();
+			driver.findElement(locCustomer.inpSearchLasttName).sendKeys(lastName);
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -63,7 +58,7 @@ public class customersPage {
 	
 	public boolean cickSearchButton () {
 		try {
-			driver.findElement(loc.btnSearchCustomer).click();
+			driver.findElement(locCustomer.btnSearchCustomer).click();
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());
@@ -75,8 +70,8 @@ public class customersPage {
 	
 	public boolean cickEditCustomerButton () {
 		try {
-			wait.waitPresenceOfElementLocated(loc.btnAddNew);
-			driver.findElement(loc.btnEditCustomer).click();
+			wait.waitPresenceOfElementLocated(locCustomer.btnAddNew);
+			driver.findElement(locCustomer.btnEditCustomer).click();
 		}catch(Exception e) {
 			driver.quit();
 			Assert.fail(e.getMessage());

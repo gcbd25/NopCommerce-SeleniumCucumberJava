@@ -73,4 +73,22 @@ public class ConfigFileReader {
             throw new RuntimeException("invalid Password not specified in the Configuration.properties file.");
         }
     }
+
+    public String getErrorInLogInPage(){
+        String msg = properties.getProperty("errorMessage");
+        if(msg != null){
+            return msg;
+        } else {
+            throw new RuntimeException("Data not specified in the Configuration.properties file.");
+        }
+    }
+
+    public String getErrorMsgEmptyForm(){
+        String msg = properties.getProperty("errorMessageWithEmptyForm");
+        if(msg != null){
+            return msg;
+        } else {
+            throw new RuntimeException("Data not specified in the Configuration.properties file.");
+        }
+    }
 }

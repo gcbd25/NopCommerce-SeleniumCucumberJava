@@ -1,5 +1,6 @@
 Feature: Validate the functionality of Customers page on NopCommerce site
 
+  @Skip
   Scenario: As a User, I want to see an error message if I leave empty all fields while creating a user
     Given User Launch "Chrome" Browser
     When User Opens URL
@@ -13,7 +14,7 @@ Feature: Validate the functionality of Customers page on NopCommerce site
     And User click Add New Button on Customers Page
     Then User validates landing on "Add a new customer" Page
     And User click Save Button on Add New Customer Page
-    Then User validates "Valid Email is required for customer to be in 'Registered' role" error alert
+    Then User validates an error alert when Form is empty
     And Close Browser
 
   Scenario: As a User, I want to see an error message if I enter an invalid email address

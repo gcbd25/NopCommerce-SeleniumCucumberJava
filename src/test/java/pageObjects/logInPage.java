@@ -1,35 +1,30 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import junit.framework.Assert;
-import utilities.locators;
+import stepDefinitions.BaseClass;
+import utilities.locator.locatorsLogInPage;
 import utilities.waitHelper;
 
-public class logInPage {
-	//Llamamos al driver
-	public WebDriver driver;
-	//Se instancian lo que se encuentra dentro de el folder de "Utilities"
-	waitHelper wait;
-	locators loc;
-		
+import static org.testng.AssertJUnit.fail;
+
+public class logInPage extends BaseClass {
 	public logInPage(WebDriver rdriver) {
 		driver = rdriver;
 		PageFactory.initElements(driver, this);
 		wait = new waitHelper(driver);
-		loc = new locators();
+		locLogIn = new locatorsLogInPage();
 	}
 		
 	public boolean sendUsername (String user) {
 		try {
-			wait.waitPresenceOfElementLocated(loc.inpUserNameLogIn);
-			driver.findElement(loc.inpUserNameLogIn).clear();
-			driver.findElement(loc.inpUserNameLogIn).sendKeys(user);
+			wait.waitPresenceOfElementLocated(locLogIn.inpUserNameLogIn);
+			driver.findElement(locLogIn.inpUserNameLogIn).clear();
+			driver.findElement(locLogIn.inpUserNameLogIn).sendKeys(user);
 		}catch(Exception e) {
-			driver.quit();
-			Assert.fail(e.getMessage());
-			//System.out.println(e.getMessage());
+            fail();
 			return false;
 		}
 		return true;
@@ -37,12 +32,10 @@ public class logInPage {
 		
 	public boolean sendPsw (String psw) {
 		try {
-			driver.findElement(loc.inpPswLogIn).clear();
-			driver.findElement(loc.inpPswLogIn).sendKeys(psw);
+			driver.findElement(locLogIn.inpPswLogIn).clear();
+			driver.findElement(locLogIn.inpPswLogIn).sendKeys(psw);
 		}catch(Exception e) {
-			driver.quit();
-			Assert.fail(e.getMessage());
-			//System.out.println(e.getMessage());
+			fail(e.getMessage());
 			return false;
 		}
 		return true;
@@ -50,28 +43,24 @@ public class logInPage {
 		
 	public boolean clickLogInBtn () {
 		try {
-			driver.findElement(loc.btnLogIn).click();
+			driver.findElement(locLogIn.btnLogIn).click();
+			return true;
 		}catch(Exception e) {
-			driver.quit();
-			Assert.fail(e.getMessage());
-			//System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 			return false;
 		}
-		return true;
 	}
 		
-	public String validateErrorMsg () {
+	public boolean validateErrorMsg (String msg) {
 		try {
-			wait.waitVisibilityOfElementLocated(loc.errorMsgInvalidCred);
-			return driver.findElement(loc.errorMsgInvalidCred).getText();
+			wait.waitVisibilityOfElementLocated(locLogIn.errorMsgInvalidCred);
+			Assert.assertTrue(driver.findElement(locLogIn.errorMsgInvalidCred).getText().contains(msg));
+			return true;
 		}catch(Exception e) {
-			driver.quit();
-			Assert.fail(e.getMessage());
-			//System.out.println(e.getMessage());
-			return "Something is not working";
+			System.out.println(e.getMessage());
+			fail("Error in assertion");
+			return false;
 		}
 	}
-		
-		
 			
 }

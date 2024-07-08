@@ -4,31 +4,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import junit.framework.Assert;
-import utilities.locators;
+import stepDefinitions.BaseClass;
+import utilities.locator.locatorsMenuBar;
 import utilities.waitHelper;
 
-public class menuBar {
-	//Llamamos al driver
-	public WebDriver driver;
-	//Se instancian lo que se encuentra dentro de el folder de "Utilities"
-	waitHelper wait;
-	locators loc;
-			
+public class menuBar extends BaseClass {
 	public menuBar(WebDriver rdriver) {
 		driver = rdriver;
 		PageFactory.initElements(driver, this);
 		wait = new waitHelper(driver);
-		loc = new locators();
+		locMenuBar = new locatorsMenuBar();
 	}
 	
 	public boolean clickMenuOption (String option) {
 		try {
 			if (option.equals("Customers")) {
-				wait.waitVisibilityOfElementLocated(loc.ddwnCustomers);
-				driver.findElement(loc.ddwnCustomers).click();
+				wait.waitVisibilityOfElementLocated(locMenuBar.ddwnCustomers);
+				driver.findElement(locMenuBar.ddwnCustomers).click();
 			}else if (option.equals("Catalog")) {
-				wait.waitPresenceOfElementLocated(loc.ddwnCatalog);
-				driver.findElement(loc.ddwnCatalog).click();
+				wait.waitPresenceOfElementLocated(locMenuBar.ddwnCatalog);
+				driver.findElement(locMenuBar.ddwnCatalog).click();
 			}else {
 				driver.quit();
 			}
@@ -44,11 +39,11 @@ public class menuBar {
 	public boolean optionInsideCustomers (String option) {
 		try {
 			if (option.equals("Customers")) {
-				wait.waitPresenceOfElementLocated(loc.ddwnCustomersOptionCustomers);
-				driver.findElement(loc.ddwnCustomersOptionCustomers).click();
+				wait.waitPresenceOfElementLocated(locMenuBar.ddwnCustomersOptionCustomers);
+				driver.findElement(locMenuBar.ddwnCustomersOptionCustomers).click();
 			}else if (option.equals("Customer Roles")) {
-				wait.waitPresenceOfElementLocated(loc.ddwnCustomersOptionCustomerRoles);
-				driver.findElement(loc.ddwnCustomersOptionCustomerRoles).click();
+				wait.waitPresenceOfElementLocated(locMenuBar.ddwnCustomersOptionCustomerRoles);
+				driver.findElement(locMenuBar.ddwnCustomersOptionCustomerRoles).click();
 			}else {
 				driver.quit();
 			}
@@ -64,11 +59,11 @@ public class menuBar {
 	public boolean optionInsideCatalog (String option) {
 		try {
 			if (option.equals("Products")) {
-				wait.waitPresenceOfElementLocated(loc.ddwnCatalogOptionProducts);
-				driver.findElement(loc.ddwnCatalogOptionProducts).click();
+				wait.waitPresenceOfElementLocated(locMenuBar.ddwnCatalogOptionProducts);
+				driver.findElement(locMenuBar.ddwnCatalogOptionProducts).click();
 			}else if (option.equals("Categories")) {
-				wait.waitPresenceOfElementLocated(loc.ddwnCatalogOptionCategories);
-				driver.findElement(loc.ddwnCatalogOptionCategories).click();
+				wait.waitPresenceOfElementLocated(locMenuBar.ddwnCatalogOptionCategories);
+				driver.findElement(locMenuBar.ddwnCatalogOptionCategories).click();
 			}else {
 				driver.quit();
 			}

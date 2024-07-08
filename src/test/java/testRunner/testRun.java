@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = ".//Features",
 		glue = "stepDefinitions",
-		//tags = "@Skip",
+		tags = "@Skip",
 		dryRun=false,
 		plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 		)

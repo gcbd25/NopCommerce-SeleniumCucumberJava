@@ -9,7 +9,7 @@ import pageObjects.editCustomerPage;
 import pageObjects.logInPage;
 import pageObjects.menuBar;
 import pageObjects.productsPage;
-import utilities.locators;
+import utilities.locator.*;
 import utilities.takeScreenshot;
 import utilities.waitHelper;
 
@@ -19,9 +19,16 @@ public class BaseClass {
 	public WebDriver driver;
 	//Se instancia los archivos de "Utilities" para usarlos en Steps.java
 	public waitHelper wait;
-	public locators loc;
 	public takeScreenshot screen;
-	//Se instancian los archivos de "Page Object" para usarlos en Steps.java
+	//Xpaths for Page Objects
+	public locatorsLogInPage locLogIn;
+	public locatorsMenuBar locMenuBar;
+	public locatorsCustomerPage locCustomer;
+	public locatorsAddNewCustomer locAddNewCustomer;
+	public locatorsEditCustomerPage locEditCustomer;
+	public locatorsProductPage locProducts;
+	public locatorsCommon locCommon;
+	//"Page Object"
 	public logInPage logIn;
 	public menuBar menu;
 	public customersPage customer;
